@@ -1,0 +1,9 @@
+{
+    "handler_name": "some_handler",
+    "handler_description": "A MindsDB handler for something",
+    "author_name": "Your Name",
+    "author_email": "name@example.com",
+    "github_username": "yourgithubusername",
+    "handler_type": "database",
+    "version": "0.1.0"
+}
