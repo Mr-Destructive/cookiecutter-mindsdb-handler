@@ -8,14 +8,21 @@ from mindsdb.integrations.libs.response import (
     HandlerResponse as Response,
     HandlerStatusResponse as StatusResponse,
 )
-from mindsdb.integrations.libs.base import DatabaseHandler
+
+{% if cookiecutter.handler_type == 'mlengine' %}
+from mindsdb.integrations.libs.base import BaseMLEngine as Handler
+{% elif cookiecutter.handler_type == 'api' %}
+from mindsdb.integrations.libs.api_handler import APIHandler as Handler
+{% else %}
+from mindsdb.integrations.libs.base import DatabaseHandler as Handler
+
 
 from mindsdb.utilities import log
 
 logger = log.getLogger(__name__)
 
 
-class {{ cookiecutter.handler_name }}Handler(DatabaseHandler):
+class {{ cookiecutter.handler_name }}Handler(Handler):
     """This handler handles connection and execution of the {{ cookiecutter.handler_name }}."""
 
     name = "{{ cookiecutter.handler_name }}"
